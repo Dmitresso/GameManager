@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a804864733ff97d4d8566992ca91070d, type: 3}
+  m_Name: DETAILED UISkin
+  m_EditorClassIdentifier: 
+  mainMenu:
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    startButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    settingsButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    exitButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+  settingsMenu:
+    goBackButton:
+      sprites:
+        m_HighlightedSprite: {fileID: 0}
+        m_PressedSprite: {fileID: 0}
+        m_SelectedSprite: {fileID: 0}
+        m_DisabledSprite: {fileID: 0}
+    transitionsTypeTextColor: {r: 0, g: 0, b: 0, a: 0}
+    transitionsTypeDropdown:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    animatorSpeedTextColor: {r: 0, g: 0, b: 0, a: 0}
+    animatorSpeedSlider:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    volumeTextColor: {r: 0, g: 0, b: 0, a: 0}
+    volumeSlider:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    screenResolutionTextColor: {r: 0, g: 0, b: 0, a: 0}
+    screenResolutionDropdown:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    skinTextColor: {r: 0, g: 0, b: 0, a: 0}
+    skinDropdown:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    skyboxMaterialTextColor: {r: 0, g: 0, b: 0, a: 0}
+    skyboxMaterialDropdown:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    skyboxTypeTextColor: {r: 0, g: 0, b: 0, a: 0}
+    skyboxTypeDropdown:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    swapSkyboxesTextColor: {r: 0, g: 0, b: 0, a: 0}
+    swapSkyboxesToggle:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+  pauseMenu:
+    background: {r: 0, g: 0, b: 0, a: 0}
+    pauseText: {r: 0, g: 0, b: 0, a: 0}
+    resumeButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    restartButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    quitButton:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+  splashScreen:
+    background: {r: 0, g: 0, b: 0, a: 0}
+    titleText: {r: 0, g: 0, b: 0, a: 0}
+    taglineText: {r: 0, g: 0, b: 0, a: 0}

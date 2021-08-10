@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3194511045996961429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3194511045996961428}
+  - component: {fileID: -9148435417903989532}
+  - component: {fileID: 1233851117731708784}
+  m_Layer: 0
+  m_Name: SkyboxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3194511045996961428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194511045996961429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-9148435417903989532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194511045996961429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db3e3a13e944ea3b4264de469c85a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+--- !u!114 &1233851117731708784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194511045996961429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e767590a4049a98d178a3d2ef1a5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapRate: 10
+  fadeTime: 1
+  selectedSkyboxType: 1
+  selectedSkyboxMaterial: {fileID: 0}
+  lightSkyboxes:
+  - {fileID: 2100000, guid: 230253df3526ce24bbf032a703912f11, type: 2}
+  - {fileID: 2100000, guid: a8aca666feef1b840b692a4aa09ef5ee, type: 2}
+  - {fileID: 2100000, guid: 4960822881ca4f346b7bb546588b6beb, type: 2}
+  - {fileID: 2100000, guid: eae8d1fddf52fae498bf43320c7ff1e7, type: 2}
+  darkSkyboxes:
+  - {fileID: 2100000, guid: b8b2978e52dfacf4fb83bae3a977c294, type: 2}
+  - {fileID: 2100000, guid: b673cebb9cf11a646858793b30858b6c, type: 2}
+  - {fileID: 2100000, guid: 9bc98941de2f53e40a96aa1f2a6a770d, type: 2}
+  - {fileID: 2100000, guid: ef1c746ffa96dd34baf701ed77c8d01f, type: 2}
+  - {fileID: 2100000, guid: 2ea512d619c8f5441890a2bfe1c470b4, type: 2}

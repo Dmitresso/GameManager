@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625229c8e22b7a542b1bf3d9ee2defb0, type: 3}
+  m_Name: Light UISkin
+  m_EditorClassIdentifier: 
+  controlsTextColor: {r: 0, g: 0, b: 0, a: 1}
+  mainMenuBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  mainMenuButtons:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    sprites:
+      sprite: {fileID: 0}
+      spriteState:
+        m_HighlightedSprite: {fileID: 0}
+        m_PressedSprite: {fileID: 0}
+        m_SelectedSprite: {fileID: 0}
+        m_DisabledSprite: {fileID: 0}
+  settingsMenuTextColor: {r: 1, g: 1, b: 1, a: 1}
+  settingsMenuTextOutlineColor:
+    serializedVersion: 2
+    rgba: 4283387727
+  settingsMenuTextOutlineWidth: 0.1
+  goBackButton:
+    colors:
+      colors:
+        m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+        m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+        m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+        m_ColorMultiplier: 0
+        m_FadeDuration: 0
+    sprites:
+      sprite: {fileID: 21300000, guid: 797fa3b80365bd347b7bd684b4a5da56, type: 3}
+      spriteState:
+        m_HighlightedSprite: {fileID: 21300000, guid: 2e67b0968c9984e4ea3fd811932bd2fc, type: 3}
+        m_PressedSprite: {fileID: 0}
+        m_SelectedSprite: {fileID: 0}
+        m_DisabledSprite: {fileID: 0}
+  settingsMenuButtons:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    sprites:
+      sprite: {fileID: 0}
+      spriteState:
+        m_HighlightedSprite: {fileID: 0}
+        m_PressedSprite: {fileID: 0}
+        m_SelectedSprite: {fileID: 0}
+        m_DisabledSprite: {fileID: 0}
+  settingsMenuDropdowns:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    arrow: {fileID: 21300000, guid: 40a7a14ff2508c44cb23ba7b075cc2cb, type: 3}
+    checkmark: {fileID: 21300000, guid: 6ea5703c69b627240ab95443e03faff8, type: 3}
+    templateBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    itemBackgroundColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+  settingsMenuSliders:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    backgroundColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    handleColor: {r: 1, g: 1, b: 1, a: 1}
+    fillColor: {r: 1, g: 1, b: 1, a: 1}
+  settingsMenuToggles:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    checkmark: {fileID: 21300000, guid: 6ea5703c69b627240ab95443e03faff8, type: 3}
+  pauseMenuBackgroundColor: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
+  pauseMenuTextColor: {r: 1, g: 1, b: 1, a: 1}
+  pauseMenuButtons:
+    colors:
+      colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0.1
+    sprites:
+      sprite: {fileID: 0}
+      spriteState:
+        m_HighlightedSprite: {fileID: 0}
+        m_PressedSprite: {fileID: 0}
+        m_SelectedSprite: {fileID: 0}
+        m_DisabledSprite: {fileID: 0}
+  splashScreenBackgroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
+  titleTextColor: {r: 1, g: 1, b: 1, a: 1}
+  taglineTextColor: {r: 1, g: 1, b: 1, a: 1}
