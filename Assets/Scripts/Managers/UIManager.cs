@@ -31,7 +31,7 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField] private TMP_FontAsset selectedFont;
     [SerializeField] private List<TMP_FontAsset> fonts;
 
-
+    private CanvasScaler canvasScaler;
     private int inspectorAnimationsSpeed = 2;
     private bool inspectorSwapSkyboxes;
     private UISkin inspectorSkin;
@@ -66,6 +66,11 @@ public class UIManager : Singleton<UIManager> {
         }
     }
 
+    public Vector2 ReferenceResolution {
+        get => canvasScaler.referenceResolution;
+        set => canvasScaler.referenceResolution = value;
+    }
+    
     public List<UISkin> Skins {
         get => skins;
         set => skins = value;
@@ -146,6 +151,7 @@ public class UIManager : Singleton<UIManager> {
 
     private void OnDisable() {
         StopAllCoroutines();
+        var a = GetComponent<CanvasScaler>().referenceResolution;
     }
     
     
@@ -171,6 +177,7 @@ public class UIManager : Singleton<UIManager> {
 
 
     private void Init() {
+        canvasScaler = GetComponent<CanvasScaler>();
         StartCoroutine(InitFonts());
         StartCoroutine(InitSkins());
     }

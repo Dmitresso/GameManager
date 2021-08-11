@@ -93,7 +93,7 @@ public class SettingsMenu : UIMenu {
     
     private Animator animator;
     private MenuTransitions[] menuTransitionsBehaviors;
-    private List<string> resolutions = new List<string>();
+
 
 
     public bool SkinDropdownInteractable {
@@ -203,9 +203,11 @@ public class SettingsMenu : UIMenu {
     
     private IEnumerator InitResolutions() {
         yield return new WaitUntil(() => ResolutionManager.Instance.ResolutionsInit);
+        var resolutions = new List<string>();
+        
         foreach (var r in ResolutionManager.Instance.windowedResolutions) resolutions.Add(r.x + "×" + r.y);
         
-        if (ResolutionManager.Instance.fullscreenResolutions.Count >= 2) {
+        if (ResolutionManager.Instance.fullscreenResolutions.Count > 1) {
             resolutions.Add(ResolutionManager.Instance.fullscreenResolutions[ResolutionManager.Instance.fullscreenResolutions.Count - 2].x +
                             "×" + ResolutionManager.Instance.fullscreenResolutions[ResolutionManager.Instance.fullscreenResolutions.Count - 2].y +
                             " (Fullscreen)");
@@ -213,9 +215,16 @@ public class SettingsMenu : UIMenu {
         resolutions.Add(ResolutionManager.Instance.fullscreenResolutions[ResolutionManager.Instance.fullscreenResolutions.Count - 1].x +
                         "×" + ResolutionManager.Instance.fullscreenResolutions[ResolutionManager.Instance.fullscreenResolutions.Count - 1].y +
                         " (Fullscreen)");
-        
+
+
         screenResDropdown.ClearOptions();
         screenResDropdown.AddOptions(resolutions);
+        var s = UIManager.Instance.ReferenceResolution.x + "×" + UIManager.Instance.ReferenceResolution.y;
+        for (var i = 0; i < resolutions.Count; i++) {
+            if (!resolutions[i].Contains(s)) continue;
+            screenResDropdown.SetValueWithoutNotify(i);
+            break;
+        }
     }
 
     private void GoBackButtonClicked() {
