@@ -49,11 +49,12 @@ public class MainMenu : UIMenu {
 
 
     private void StartButtonClicked() {
-        GameManager.Instance.UpdateState(GameState.Game.Running);
+        GameManager.Instance.UpdateState(State.UI.Disabled);
+        GameManager.Instance.StartCoroutine(GameManager.Instance.StartGame());
     }
 
     private void SettingsButtonClicked() {
-        GameManager.Instance.UpdateState(GameState.Menu.InSettings);
+        GameManager.Instance.UpdateState(State.UI.InSettings);
     }
 
     private void ExitButtonClicked() {

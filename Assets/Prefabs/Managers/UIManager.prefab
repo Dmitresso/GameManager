@@ -6262,7 +6262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db3e3a13e944ea3b4264de469c85a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
 --- !u!114 &4869482631720059711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6275,6 +6275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0cbc846df940b99eff36ee75bc51cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 
   menu:
     MainMenu: {fileID: 6621333806317112918}
     SettingsMenu: {fileID: 3198495157742620426}

@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using Data;
 using UnityEditor;
 
 
 public class GameManager : Singleton<GameManager> {
-    [SerializeField, ReadOnly] private string state;
+    [SerializeField, ReadOnly] public string state;
     [SerializeField] private bool pausable = true;
     [SerializeField] private GameObject[] SystemPrefabs;
 
@@ -17,12 +18,41 @@ public class GameManager : Singleton<GameManager> {
     private List<GameObject> instancedSystemPrefabs;
     private List<AsyncOperation> loadOperations;
     
+    private static string currentGameState;
+    private static string currentUIState;
     
-    private string CurrentGameState {
-        get => state;
-        set => state = value;
+    private static string GameState {
+        get => currentGameState;
+        set => currentGameState = GameManager.Instance.state = value;
     }
 
+    private static string UIState {
+        get => currentUIState;
+        set => currentUIState = UIManager.Instance.state = value;
+    }
+
+
+    public static bool InGame {
+        get;
+        set;
+    }
+    
+    public static bool Loading {
+        get;
+        set;
+    }
+
+    public static bool Waiting {
+        get;
+        set;
+    }
+
+    public static bool Running {
+        get;
+        set;
+    }
+    
+    
     
     private void OnDisable() {
         StopAllCoroutines();
@@ -33,7 +63,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private void Start() {
-        UpdateState(GameState.Menu.InSplashscreen);
+        UpdateState(State.UI.InSplashscreen);
     }
 
     private void Update() {
@@ -57,11 +87,11 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private void PauseGame() {
-        UpdateState(GameState.Menu.InPause);
+        UpdateState(State.UI.InPause);
     }
     
     private void ResumeGame() {
-        UpdateState(GameState.Game.Running);
+        UpdateState(State.UI.Disabled);
     }
 
     private void InstantiateSystemPrefabs() {
@@ -69,19 +99,20 @@ public class GameManager : Singleton<GameManager> {
             var prefabInstance = Instantiate(go);
             instancedSystemPrefabs.Add(prefabInstance);
         }
+        UpdateState(State.Game.Running);
     }
 
 
     private void OnLoadOperationComplete(AsyncOperation ao) {
         if (loadOperations.Contains(ao)) {
             loadOperations.Remove(ao);
-            if (loadOperations.Count == 0) UpdateState(GameState.Game.Running);
+            if (loadOperations.Count == 0) UpdateState(State.Game.Running);
         }
-        Debug.Log("Loading Completed.");
+        Debug.Log("Loading operation completed.");
     }
 
     private void OnUnloadOperationComplete(AsyncOperation ao) {
-        Debug.Log("Unloading Completed.");
+        Debug.Log("Unloading operation completed.");
     }
 
     private IEnumerator ExitApp() {
@@ -93,85 +124,74 @@ public class GameManager : Singleton<GameManager> {
         #endif
         Application.Quit();
     }
-
-
-    public void UpdateState(int i) {
+    
+    private  void UpdateState(int i) {
         switch (i) {
-            case 0: UpdateState(GameState.Game.Loading); break;
-            case 1: UpdateState(GameState.Game.Waiting); break;
-            case 2: UpdateState(GameState.Game.Running); break;
-            case 3: UpdateState(GameState.Menu.InSplashscreen); break;
-            case 4: UpdateState(GameState.Menu.InMain); break;
-            case 5: UpdateState(GameState.Menu.InSettings); break;
-            case 6: UpdateState(GameState.Menu.InPause); break;
+            case 0:
+                GameState = State.Game.Loading.ToString();
+                break;
+            case 1:
+                GameState = State.Game.Waiting.ToString();
+                break;
+            case 2:
+                GameState = State.Game.Running.ToString();
+                break;
+            case 3:
+                UIState = State.UI.Disabled.ToString();
+                UIManager.State.InMenu = false;
+                UIManager.State.InSplashScreen = false;
+                UIManager.State.InMain = false;
+                UIManager.State.InSettings = false;
+                UIManager.State.InPause = false;
+                break;
+            case 4:
+                UIState = State.UI.InSplashscreen.ToString();
+                UIManager.State.InMenu = true;
+                UIManager.State.InSplashScreen = true;
+                UIManager.State.InMain = false;
+                UIManager.State.InSettings = false;
+                UIManager.State.InPause = false;
+                break;
+            case 5:
+                UIState = State.UI.InMain.ToString();
+                UIManager.State.InMenu = true;
+                UIManager.State.InSplashScreen = false;
+                UIManager.State.InMain = true;
+                UIManager.State.InSettings = false;
+                UIManager.State.InPause = false;
+                break;
+            case 6:
+                UIState = State.UI.InSettings.ToString();
+                UIManager.State.InMenu = true;
+                UIManager.State.InSplashScreen = false;
+                UIManager.State.InMain = false;
+                UIManager.State.InSettings = true;
+                UIManager.State.InPause = false;
+                break;
+            case 7:
+                UIState = State.UI.InPause.ToString();
+                UIManager.State.InMenu = true;
+                UIManager.State.InSplashScreen = false;
+                UIManager.State.InMain = false;
+                UIManager.State.InSettings = false;
+                UIManager.State.InPause = true;
+                break;
         }
     }
     
-    public void UpdateState(GameState.Game state) {
-        var previousGameState = CurrentGameState;
-        CurrentGameState = state.ToString();
-        if (Tracker.IsInit) Tracker.Instance.LogStateTransitionOpInfo(previousGameState, CurrentGameState);
-
-        if (CurrentGameState == GameState.Menu.InMain.ToString()) UIManager.Instance.InMain = false;
-        else if (CurrentGameState == GameState.Menu.InPause.ToString()) UIManager.Instance.InPause = false;
-            
-        UIManager.Instance.InGame = true;
-        UIManager.Instance.InMenu = false;
-        UIManager.Instance.InSplashScreen = false;
-        UIManager.Instance.InMain = false;
-        UIManager.Instance.InPause = false;
-        UIManager.Instance.InSettings = false;
-        switch (state) {
-            case GameState.Game.Loading:
-                break;
-            case GameState.Game.Waiting:
-                break;
-            case GameState.Game.Running:
-                UIManager.Instance.Running = true;
-                break;
-        }
-        
-        //OnGameStateChanged?.Invoke(CurrentGameState, previousGameState);
+    public void UpdateState(State.Game gameState) {
+        UpdateState((int) gameState);
     }
 
-    public void UpdateState(GameState.Menu state) {
-        var previousGameState = CurrentGameState;
-        CurrentGameState = state.ToString();
-        if (Tracker.IsInit) Tracker.Instance.LogStateTransitionOpInfo(previousGameState, CurrentGameState);
-
-        UIManager.Instance.InGame = false;
-        UIManager.Instance.InMenu = true;
-        switch (state) {
-            case GameState.Menu.InSplashscreen:
-                UIManager.Instance.InSplashScreen = true;
-                UIManager.Instance.InMain = false;
-                UIManager.Instance.InPause = false;
-                UIManager.Instance.InSettings = false;
-                break;
-            case GameState.Menu.InMain:
-                UIManager.Instance.InSplashScreen = false;
-                UIManager.Instance.InMain = true;
-                UIManager.Instance.InPause = false;
-                UIManager.Instance.InSettings = false;
-                break;
-            case GameState.Menu.InPause:
-                UIManager.Instance.InSplashScreen = false;
-                UIManager.Instance.InMain = false;
-                UIManager.Instance.InPause = true;
-                UIManager.Instance.InSettings = false;
-                break;
-            case GameState.Menu.InSettings:
-                UIManager.Instance.InSplashScreen = false;
-                UIManager.Instance.InMain = false;
-                UIManager.Instance.InPause = false;
-                UIManager.Instance.InSettings = true;
-                break;
-        }
-    }
+    public void UpdateState(State.UI uiState) {
+        UpdateState((int) uiState);
+    } 
+    
+    
     
     public void PressPause() {
         if (!pausable) return;
-        if (CurrentGameState == GameState.Menu.InPause.ToString()) ResumeGame();
+        if (UIState == State.UI.InPause.ToString()) ResumeGame();
         else PauseGame();
     }
 
@@ -199,13 +219,28 @@ public class GameManager : Singleton<GameManager> {
         ao.completed += OnUnloadOperationComplete;
     }
 
-    public void StartGame() {
-        UpdateState(GameState.Game.Running);
+    public IEnumerator StartGame() {
         LoadScene(Scenes.Main);
+        yield return new WaitForSeconds(1);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(Scenes.Main));
+        UnloadScene(Scenes.Boot);
     }
 
-    public void RestartGame() {
-        UpdateState(GameState.Game.Loading);
+    public IEnumerator RestartGame() {
+        Debug.Log("Main unloaded.");
+        if (GetComponent<DontDestroyOnLoad>().IsDontDestroyOnLoad) {
+            foreach (var go in gameObject.scene.GetRootGameObjects()) {
+                Debug.Log($"[GameManager] Destroying object {go.name}");
+                if (go.name != gameObject.name) Destroy(go);
+            }
+        }
+
+        LoadScene(Scenes.Boot);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(Scenes.Boot));
+        yield return new WaitForSeconds(0.5f);
+        UnloadScene(Scenes.Main);
+        Destroy(gameObject);
     }
 
     public void ExitGame() {

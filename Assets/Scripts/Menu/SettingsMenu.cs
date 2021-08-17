@@ -229,7 +229,7 @@ public class SettingsMenu : UIMenu {
 
     private void GoBackButtonClicked() {
         if (Tracker.IsInit) Tracker.Instance.Log("GoBackButtonClicked event was called.");
-        GameManager.Instance.UpdateState(GameState.Menu.InMain);
+        GameManager.Instance.UpdateState(State.UI.InMain);
     }
 
     private void TransitionsTypeDropdownValueChanged(int value) {

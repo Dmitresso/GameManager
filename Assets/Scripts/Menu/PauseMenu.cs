@@ -45,15 +45,15 @@ public class PauseMenu : UIMenu {
     }
 
     private void ResumeButtonClicked() {
-        GameManager.Instance.UpdateState(GameState.Game.Running);
+        GameManager.Instance.PressPause();
     }
 
     private void RestartButtonClicked() {
-        GameManager.Instance.RestartGame();
+        GameManager.Instance.StartCoroutine(GameManager.Instance.RestartGame());
     }
 
     private void QuitButtonClicked() {
-        GameManager.Instance.UpdateState(GameState.Menu.InMain);
+        GameManager.Instance.UpdateState(State.UI.InMain);
     }
 
     protected override void SetFont(TMP_FontAsset font) {

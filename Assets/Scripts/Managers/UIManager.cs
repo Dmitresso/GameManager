@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager> {
     public Action<int> SetSkinDropdownValue; 
     public Action<int> SetFontDropdownValue; 
 
+    [SerializeField, ReadOnly] public string state;
     [SerializeField] public Menu menu;
     [SerializeField] private Camera camera;
     [SerializeField] private AudioSource audio;
@@ -97,56 +98,43 @@ public class UIManager : Singleton<UIManager> {
         }
     }
 
-    public bool InGame {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.InGame);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.InGame, value);
-    }
+
+    public static class State {
+        public static Animator animator;
+
+        public static bool InMenu {
+            get => animator.GetBool(Data.Animator.Parameters.Id.Bool.InMenu);
+            set => animator.SetBool(Data.Animator.Parameters.Id.Bool.InMenu, value);
+        }
     
-    public bool InMenu {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.InMenu);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.InMenu, value);
-    }
+        public static bool InSplashScreen {
+            get => animator.GetBool(Data.Animator.Parameters.Id.Bool.State.UI.InSplashScreen);
+            set => animator.SetBool(Data.Animator.Parameters.Id.Bool.State.UI.InSplashScreen, value);
+        }    
     
-    public bool InSplashScreen {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InSplashScreen);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InSplashScreen, value);
+        public static bool InMain {
+            get => animator.GetBool(Data.Animator.Parameters.Id.Bool.State.UI.InMain);
+            set => animator.SetBool(Data.Animator.Parameters.Id.Bool.State.UI.InMain, value);
+        }
+    
+        public static bool InPause {
+            get => animator.GetBool(Data.Animator.Parameters.Id.Bool.State.UI.InPause);
+            set => animator.SetBool(Data.Animator.Parameters.Id.Bool.State.UI.InPause, value);
+        }
+    
+        public static bool InSettings {
+            get => animator.GetBool(Data.Animator.Parameters.Id.Bool.State.UI.InSettings);
+            set => animator.SetBool(Data.Animator.Parameters.Id.Bool.State.UI.InSettings, value);
+        }
     }    
-    
-    public bool InMain {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InMain);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InMain, value);
-    }
-    
-    public bool InPause {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InPause);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InPause, value);
-    }
-    
-    public bool InSettings {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InSettings);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.GameState.Menu.InSettings, value);
-    }
 
-    public bool Loading {
-        get;
-        set;
-    }
-
-    public bool Waiting {
-        get;
-        set;
-    }
-
-    public bool Running {
-        get => animator.GetBool(Data.Animator.Parameters.Id.Bool.GameState.Game.Running);
-        set => animator.SetBool(Data.Animator.Parameters.Id.Bool.GameState.Game.Running, value);
-    }
 
 
     
     
     private void Awake() {
         Init();
+
     }
 
     private void OnDisable() {
@@ -171,12 +159,13 @@ public class UIManager : Singleton<UIManager> {
     }
 
     private void Update() {
-        if (!InMenu) return;
+        if (!State.InMenu) return;
         if (Input.GetKeyDown(KeyCode.Space)) SetTrigger(Data.Animator.Parameters.Id.Trigger.SpaceBarClick);
     }
 
 
     private void Init() {
+        State.animator = GetComponent<Animator>();        
         canvasScaler = GetComponent<CanvasScaler>();
         StartCoroutine(InitFonts());
         StartCoroutine(InitSkins());

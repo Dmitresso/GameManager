@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Data {
     public struct Animator {
@@ -16,18 +15,13 @@ namespace Data {
             public static void Init() {
                 functions = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase) {
                     {nameof(GoToMainMenu), GoToMainMenu},
-                    {nameof(Test), Test}
                 };
                 if (Tracker.IsInit) Tracker.Instance.Log("Events data was successfully initialized.");
             }
             
             private static void GoToMainMenu() {
-                GameManager.Instance.UpdateState(GameState.Menu.InMain);
+                GameManager.Instance.UpdateState(State.UI.InMain);
                 if (Tracker.IsInit) Tracker.Instance.Log("GoToMainMenu() event was called.");
-            }
-
-            private static void Test() {
-                Debug.Log("TEST");
             }
         }
         
@@ -57,11 +51,11 @@ namespace Data {
 
                 Id.Bool.InGame = UnityEngine.Animator.StringToHash(String.Bool.InGame);
                 Id.Bool.InMenu = UnityEngine.Animator.StringToHash(String.Bool.InMenu);
-                Id.Bool.GameState.Menu.InSplashScreen = UnityEngine.Animator.StringToHash(String.Bool.GameState.Menu.InSplashScreen);
-                Id.Bool.GameState.Menu.InSettings = UnityEngine.Animator.StringToHash(String.Bool.GameState.Menu.InSettings);
-                Id.Bool.GameState.Menu.InMain = UnityEngine.Animator.StringToHash(String.Bool.GameState.Menu.InMain);
-                Id.Bool.GameState.Menu.InPause = UnityEngine.Animator.StringToHash(String.Bool.GameState.Menu.InPause);
-                Id.Bool.GameState.Game.Running = UnityEngine.Animator.StringToHash(String.Bool.GameState.Game.Running);
+                Id.Bool.State.UI.InSplashScreen = UnityEngine.Animator.StringToHash(String.Bool.State.UI.InSplashScreen);
+                Id.Bool.State.UI.InSettings = UnityEngine.Animator.StringToHash(String.Bool.State.UI.InSettings);
+                Id.Bool.State.UI.InMain = UnityEngine.Animator.StringToHash(String.Bool.State.UI.InMain);
+                Id.Bool.State.UI.InPause = UnityEngine.Animator.StringToHash(String.Bool.State.UI.InPause);
+                Id.Bool.State.Game.Running = UnityEngine.Animator.StringToHash(String.Bool.State.Game.Running);
                 Id.Bool.SwapSkyboxes = UnityEngine.Animator.StringToHash(String.Bool.SwapSkyboxes);
                 Id.Bool.UseLightSkyboxes = UnityEngine.Animator.StringToHash(String.Bool.UseLightSkyboxes);
                 Id.Bool.UseDarkSkyboxes = UnityEngine.Animator.StringToHash(String.Bool.UseDarkSkyboxes);
@@ -98,13 +92,13 @@ namespace Data {
                     public static int InGame;
                     public static int InMenu;
                     
-                    public struct GameState {
+                    public struct State {
                         public struct Game {
                             public static int
                                 Running;
                         }
 
-                        public struct Menu {
+                        public struct UI {
                             public static int
                                 InSplashScreen,
                                 InSettings,
@@ -146,17 +140,17 @@ namespace Data {
                         InGame = "InGame",
                         InMenu = "InMenu";
                     
-                    public struct GameState {
+                    public struct State {
                         public struct Game {
                             public const string
-                                Running = "GameState.Game.Running";
+                                Running = "State.Game.Running";
                         }
-                        public struct Menu {
+                        public struct UI {
                             public const string
-                                InSplashScreen = "GameState.Menu.InSplashScreen",
-                                InSettings = "GameState.Menu.InSettings",
-                                InMain = "GameState.Menu.InMain",
-                                InPause = "GameState.Menu.InPause";                            
+                                InSplashScreen = "State.UI.InSplashScreen",
+                                InSettings = "State.UI.InSettings",
+                                InMain = "State.UI.InMain",
+                                InPause = "State.UI.InPause";                            
                         }
                     }
                     
